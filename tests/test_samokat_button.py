@@ -1,7 +1,6 @@
 import allure 
 from page_objects.samokat_button_page import samokat_button_page
 from locators.locator_page import HOME_PAGE
-
 @allure.feature("Кнопки самоката")
 class Test_samokat_button:
     

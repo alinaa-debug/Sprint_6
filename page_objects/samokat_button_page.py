@@ -5,7 +5,6 @@ class samokat_button_page:
     def __init__(self,driver2):
         self.driver = driver2
 
-
     def click_samocat_button(self):
         self.driver.find_element(*OrderButtonsLocators.SAMOKAT_BUTTON).click()
         

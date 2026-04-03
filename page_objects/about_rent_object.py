@@ -9,12 +9,11 @@ class SamokatPage(BasePage):
         super().__init__(driver)
 
 
-   
     def about_rent_first(self):
         WebDriverWait(self.driver,5).until(
         EC.visibility_of_element_located(AboutRentLocators.DELEVIRY_INPUT)
         )
-        
+
         self.driver.find_element(*AboutRentLocators.DELEVIRY_INPUT).click()
         self.driver.find_element(*AboutRentLocators.DATE1).click()
         self.driver.find_element(*AboutRentLocators.RENTAL_PERIOD).click()

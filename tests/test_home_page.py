@@ -1,7 +1,6 @@
 import allure
 from page_objects.home_page_object import HomePage
 
-
 @allure.feature("Главная страница")
 class Test_home_page:
    

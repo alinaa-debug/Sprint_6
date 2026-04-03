@@ -12,7 +12,6 @@ class AcceptPage(BasePage):
         WebDriverWait(self.driver, 5).until(
             EC.visibility_of_element_located(AcceptOrderLocators.FORM_ACCEPT_ORDER)
         )
-        
         self.driver.find_element(*AcceptOrderLocators.ACCEPT_BUTTON).click()
         WebDriverWait(self.driver,5).until(
             EC.visibility_of_element_located(AcceptOrderLocators.ORDER_HAS_BEEN)

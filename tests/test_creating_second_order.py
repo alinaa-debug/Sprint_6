@@ -13,7 +13,6 @@ def test_creating_second_order(driver):
     for_who_page = ForWhoSamokatPage(driver)
     samokat_page = SamokatPage(driver)
     accept_page = AcceptPage(driver)
-
     with allure.step("Нажать вторую кнопку 'Заказать'"):
         order_page.second_order_button()
 

@@ -1,4 +1,3 @@
-
 import allure
 from page_objects.for_who_samokat_obgect import ForWhoSamokatPage
 from page_objects.order_button_page import Order_button

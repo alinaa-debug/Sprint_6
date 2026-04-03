@@ -4,7 +4,6 @@ from locators.home_page_locators import HomePageLocators
 class HomePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-        
 
     def question1(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")

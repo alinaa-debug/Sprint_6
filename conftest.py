@@ -7,7 +7,6 @@ def driver():
     driver = webdriver.Chrome()
     driver.get(Urls.BASE_URL)
     yield driver
-
     driver.quit()
 
 
