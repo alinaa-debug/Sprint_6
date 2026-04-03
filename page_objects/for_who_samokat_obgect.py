@@ -40,6 +40,7 @@ class ForWhoSamokatPage(BasePage):
         self.set_subway_stations()
         self.set_phone("79196917519")
         self.click_further_button()
+        
     
     def filling_data2(self):
         self.set_name("Петр")

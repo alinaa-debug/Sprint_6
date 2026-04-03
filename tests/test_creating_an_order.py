@@ -5,7 +5,6 @@ from page_objects.order_button_page import Order_button
 from page_objects.accept_order import AcceptPage
 from page_objects.about_rent_object import SamokatPage
 
-
 @allure.feature("Создание заказа")
 @allure.story("Пользователь может оформить заказ самоката")
 @allure.title("Тест оформления заказа через кнопку 'Заказать'")
