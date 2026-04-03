@@ -1,10 +1,9 @@
-
 import allure
 from page_objects.home_page_object import HomePage
 
 @allure.feature("Главная страница")
 class Test_home_page:
-    
+   
     @allure.story("Вопрос 1")
     @allure.title("Проверка ответа на первый вопрос.")
     def test_question1(self,driver):

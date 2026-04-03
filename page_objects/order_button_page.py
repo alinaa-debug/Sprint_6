@@ -6,7 +6,6 @@ from locators.for_who_samokat_locators import ForWhoSamokatLocator
 from selenium.webdriver.common.by import By
 
 class Order_button(BasePage):
-    
     def __init__(self,driver):
         super().__init__(driver)
     COOKIE = [By.XPATH, "//button[contains(text(),'да все привыкли')]"]
@@ -17,6 +16,7 @@ class Order_button(BasePage):
         ).click()
         except:
             pass
+
     
     def first_order_button(self):
         WebDriverWait(self.driver,10).until(

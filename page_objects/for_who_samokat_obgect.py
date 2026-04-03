@@ -28,7 +28,6 @@ class ForWhoSamokatPage(BasePage):
 
     def set_phone(self, phone):
         self.driver.find_element(*ForWhoSamokatLocator.PHONE).send_keys(phone)
-
     def click_further_button(self):
         self.driver.find_element(*ForWhoSamokatLocator.FURTHER_BUTTON).click()
 
@@ -40,6 +39,7 @@ class ForWhoSamokatPage(BasePage):
         self.set_subway_stations()
         self.set_phone("79196917519")
         self.click_further_button()
+
     
     def filling_data2(self):
         self.set_name("Петр")

@@ -7,8 +7,8 @@ def driver():
     driver = webdriver.Chrome()
     driver.get(Urls.BASE_URL)
     yield driver
-
     driver.quit()
+
 
 @pytest.fixture()
 def driver2():
