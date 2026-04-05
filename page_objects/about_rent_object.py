@@ -1,52 +1,44 @@
-from selenium.webdriver.common.by import By
-from selenium import webdriver
+import allure
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from page_objects.base_page import BasePage
+from locators.about_rent_locators import AboutRentLocators
 
-class SamokatPage:
-    def __init__(self,driver):
-        self.driver = driver 
+class SamokatPage(BasePage):
+    @allure.step("Выбор даты аренды и срок аренды")
+    def select_date_and_period(self, date_locator, period_locator):
+        WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located(AboutRentLocators.DELEVIRY_INPUT)
+        ).click()
+        self.driver.find_element(*date_locator).click()
+        self.driver.find_element(*AboutRentLocators.RENTAL_PERIOD).click()
+        self.driver.find_element(*period_locator).click()
 
+    @allure.step("Выбор цвета самоката")
+    def select_color(self, color_locator):
+        self.driver.find_element(*color_locator).click()
 
-    DELEVIRY_INPUT = (By.XPATH, "//input[@placeholder= '* Когда привезти самокат']")
-    DATE1 = (By.XPATH, "//div[text()= '20']")
-    DATE2 = (By.XPATH, "//div[text()= '18']")
-    RENTAL_PERIOD = (By.XPATH, "//div[text()='* Срок аренды']")
-    FIRST_PERIOD = (By. XPATH, "//div[text()= 'двое суток']")
-    SECOND_PERIOD = (By. XPATH, "//div[text()= 'сутки']")
-    BLACK = (By.ID, "black")
-    GREY = (By.ID, "grey")
-    COMMENT = (By.XPATH, "//input[@placeholder= 'Комментарий для курьера']")
-    FOR_ORDER_BUTTON = (By.XPATH, "//button[text()= 'Заказать']")
-    SUCCESSFUL_ORDER = (By.CLASS_NAME, 'Order_Text__2broi')
-    FORM_ACCEPT_ORDER = (By.CLASS_NAME, 'Order_ModalHeader__3FDaJ')
+    @allure.step("Ввод комментария для курьера")
+    def enter_comment(self, comment):
+        self.driver.find_element(*AboutRentLocators.COMMENT).send_keys(comment)
 
-    def about_rent_first(self):
-        webdriver.wait(self.driver,5).until(
-        EC.visibility_of_element_located(self.DELEVIRY_INPUT)
-        )
-        self.driver.find_element(*self.DELEVIRY_INPUT).click()
-        self.driver.find_element(*self.DATE1).click()
-        self.driver.find_element(*self.RENTAL_PERIOD).click()
-        self.driver.find_element(*self.FIRST_PERIOD).click()
-        self.driver.find_element(*self.BLACK).click()
-        self.driver.find_element(*self.COMMENT).click()
-        self.driver.find_element(*self.FOR_ORDER_BUTTON).click()
-        webdriver.wait(self.driver,5).until(
-            EC.visibility_of_element_located(self.FORM_ACCEPT_ORDER)
+    @allure.step("Нажатие кнопки 'Заказать'")
+    def click_order_button(self):
+        self.driver.find_element(*AboutRentLocators.FOR_ORDER_BUTTON).click()
+        WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located(AboutRentLocators.FORM_ACCEPT_ORDER)
         )
 
-    def about_rent_second(self):
-        webdriver.wait(self.driver,5).until(
-        EC.visibility_of_element_located(self.DELEVIRY_INPUT)
-        )
-        self.driver.find_element(*self.DELEVIRY_INPUT).click()
-        self.driver.find_element(*self.DATE2).click()
-        self.driver.find_element(*self.RENTAL_PERIOD).click()
-        self.driver.find_element(*self.SECOND_PERIOD).click()
-        self.driver.find_element(*self.GREY).click()
-        self.driver.find_element(*self.FOR_ORDER_BUTTON).click()
-        webdriver.wait(self.driver,5).until(
-            EC.visibility_of_element_located(self.FORM_ACCEPT_ORDER)
-        )
+    @allure.step("Заполнить форму аренды - первый вариант")
+    def fill_rent_first(self, user_data):
+        self.select_date_and_period(AboutRentLocators.DATE1, AboutRentLocators.FIRST_PERIOD)
+        self.select_color(AboutRentLocators.BLACK)
+        self.enter_comment(user_data['comment'])
+        self.click_order_button()
 
-
+    @allure.step("Заполнить форму аренды - второй вариант")
+    def fill_rent_second(self, user_data):
+        self.select_date_and_period(AboutRentLocators.DATE2, AboutRentLocators.SECOND_PERIOD)
+        self.select_color(AboutRentLocators.GREY)
+        self.enter_comment(user_data['comment'])
+        self.click_order_button()

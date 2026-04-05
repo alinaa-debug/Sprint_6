@@ -1,20 +1,34 @@
-from selenium.webdriver.common.by import By
-from selenium import webdriver
+import allure
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from locators.accept_order_locators import AcceptOrderLocators
+from page_objects.base_page import BasePage
+class AcceptPage(BasePage):
+    def __init__(self, driver):
+        super().__init__(driver)
 
-class accept_page:
-    def __init__(self,driver):
-        self.driver = driver 
 
-    FORM_ACCEPT_ORDER = (By.CLASS_NAME, 'Order_ModalHeader__3FDaJ')
-    ACCEPT_BUTTON = (By.XPATH, "//button[text()='Да']")  
-    ORDER_HAS_BEEN = (By.CLASS_NAME ,"Order_Text__2broi")
-    
+    @allure.step("Ожидание появления формы подтверждения заказа")
+    def wait_for_accept_form(self):
+        WebDriverWait(self.driver, 5).until(
+          EC.visibility_of_element_located(AcceptOrderLocators.FORM_ACCEPT_ORDER)
+
+        )
+
+    @allure.step("Подтверждение заказа кнопкой 'Да'")
+    def click_accept_button(self):
+        self.driver.find_element(*AcceptOrderLocators.ACCEPT_BUTTON).click()
+
+
+    @allure.step("Проверка успешного оформления заказа")
+    def wait_for_order_confirmation(self):
+        WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located(AcceptOrderLocators.ORDER_HAS_BEEN)
+
+        )
+
+    @allure.step("Принять заказ полностью")
     def accept_order_page(self):
-        webdriver.wait(self.driver,5).until(
-            EC.visibility_of_element_located(self.FORM_ACCEPT_ORDER)
-        )
-        self.driver.find_element(*self.ACCEPT_BUTTON).click()
-        webdriver.wait(self.driver,5).until(
-            EC.visibility_of_element_located(self.ORDER_HAS_BEEN)
-        )
+        self.wait_for_accept_form()
+        self.click_accept_button()
+        self.wait_for_order_confirmation()

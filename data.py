@@ -2,21 +2,22 @@ class Urls:
     BASE_URL = "https://qa-scooter.praktikum-services.ru/"
     ORDER_URL = 'https://qa-scooter.praktikum-services.ru/order'
 
-class order_data:
-    orders = [
-        {
-            "name": "Иван",
-            "surname": "Иванов",
-            "adress": "Коммунистический проспект, 35/3",
-            "phone": "+79196917519",
-            "station": "Черкизовская"
-        },
-        {
-            "name": "Мария",
-            "surname": "Петрова",
-            "adress": "Арбат, 10",
-            "phone": "+79261234567",
-            "station": "Лубянка"
-        }
-    ]
- 
+
+class Users:
+    user_1 = {
+        'first_name': 'Борис',
+        'last_name': 'Иванов',
+        'address': 'Москва, ул. Пушкина, д.2',
+        'phone': '88004563535',
+        'date': '11.07.2026',
+        'comment': 'Проще позвонить, чем у кого-то занимать'
+    }
+    
+    user_2 = {
+        'first_name': 'Иван',
+        'last_name': 'Борисов',
+        'address': 'Москва, ул. Чертановская, д.23',
+        'phone': '89994567111',
+        'date': '01.7.2026',
+        'comment': 'Захватите мне булочку'
+    }
