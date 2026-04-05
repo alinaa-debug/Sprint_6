@@ -4,6 +4,7 @@ from page_objects.base_page import BasePage
 from locators.about_rent_locators import AboutRentLocators
 
 class SamokatPage(BasePage):
+    
     def __init__(self,driver):
         super().__init__(driver)
 

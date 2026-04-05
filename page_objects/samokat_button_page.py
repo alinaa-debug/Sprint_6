@@ -2,7 +2,6 @@ from locators.samocat_button_locators import OrderButtonsLocators
 
 
 class samokat_button_page:
-
     def __init__(self,driver2):
         self.driver = driver2
 

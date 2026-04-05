@@ -5,7 +5,6 @@ from locators.for_who_samokat_locators import ForWhoSamokatLocator
 
 
 class ForWhoSamokatPage(BasePage):
-
     def __init__(self, driver):
         super().__init__(driver)
 

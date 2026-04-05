@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from locators.accept_order_locators import AcceptOrderLocators
 from page_objects.base_page import BasePage
 
+
 class AcceptPage(BasePage):
     def __init__(self,driver):
         super().__init__(driver)
