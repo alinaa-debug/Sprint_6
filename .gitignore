@@ -213,6 +213,8 @@ marimo/_lsp/
 __marimo__/
 allure-results/
 .vscode
+allure-results/
+tests/test_creating_second_order.py
 __pycache__
 # Streamlit
 .streamlit/secrets.toml

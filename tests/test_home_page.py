@@ -1,6 +1,5 @@
 import allure
 from page_objects.home_page_object import HomePage
-
 @allure.feature("Главная страница")
 class Test_home_page:
    
@@ -11,6 +10,7 @@ class Test_home_page:
         text = page.question1()
         assert "Сутки — 400 рублей." in text 
     
+
     @allure.story("Вопрос 2")
     @allure.title("Проверка ответа на второй вопрос")
     def test_question2(self,driver): 

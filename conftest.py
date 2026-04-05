@@ -10,6 +10,7 @@ def driver():
     yield driver
     driver.quit()
 
+
 @pytest.fixture()
 def driver2():
     driver = webdriver.Chrome()

@@ -12,6 +12,7 @@ class Order_button(BasePage):
 
     @allure.step("Принять баннер с куки")
     def accept_cookies(self):
+        
         try:
             WebDriverWait(self.driver, 5).until(
                 EC.element_to_be_clickable(COOKIE)

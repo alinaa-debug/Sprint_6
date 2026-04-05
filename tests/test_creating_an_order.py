@@ -16,11 +16,13 @@ class TestOrderPage:
         "4. Заполнить форму о заказе и нажать 'Заказать'"
     )
     def test_order_by_header_order_button_true(self, driver):
+        
         # Создаём объекты страниц
         order_page = Order_button(driver)
         for_who_page = ForWhoSamokatPage(driver)
         samokat_page = SamokatPage(driver)
         accept_page = AcceptPage(driver)
+
 
         # 1. Принять куки
         order_page.accept_cookies()
