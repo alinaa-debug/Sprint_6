@@ -12,7 +12,7 @@ def driver():
 
 @pytest.fixture()
 def driver2():
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     driver.get(Urls.ORDER_URL)
     yield driver
 

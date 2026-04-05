@@ -1,48 +1,49 @@
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from page_objects.base_page import BasePage
 from locators.for_who_samokat_locators import ForWhoSamokatLocator
-
+import allure
 
 class ForWhoSamokatPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def set_name(self, name):
-        self.driver.find_element(*ForWhoSamokatLocator.NAME).send_keys(name)
+    @allure.step("Заполнение поля 'Имя'")
+    def send_name_to_name_field(self, text):
+        self.send_keys(ForWhoSamokatLocator.NAME, text)
 
-    def set_surname(self, surname):
-        self.driver.find_element(*ForWhoSamokatLocator.SURNAME).send_keys(surname)
+    @allure.step("Заполнение поля 'Фамилия'")
+    def send_last_name_to_name_field(self, text):
+        self.send_keys(ForWhoSamokatLocator.SURNAME, text)
 
-    def set_adress(self, adress):
-        self.driver.find_element(*ForWhoSamokatLocator.ADRESS).send_keys(adress)
+    @allure.step("Заполнение поля 'Адрес'")
+    def send_address_to_address_field(self, text):
+        self.send_keys(ForWhoSamokatLocator.ADRESS, text)
 
-    def set_subway_stations(self):
-        self.driver.find_element(*ForWhoSamokatLocator.SUBWAY_STATIONS_DROP_DOWN).click()
+    @allure.step("Выбор станции метро")
+    def send_metro_station_to_metro_station_field(self):
+        self.click_button(ForWhoSamokatLocator.SUBWAY_STATIONS_DROP_DOWN)
         WebDriverWait(self.driver, 5).until(
             EC.visibility_of_element_located(ForWhoSamokatLocator.SUBWAY_STATIONS)
         )
-        self.driver.find_element(*ForWhoSamokatLocator.SUBWAY_STATIONS).click()
+        self.click_button(ForWhoSamokatLocator.SUBWAY_STATIONS)
 
-    def set_phone(self, phone):
-        self.driver.find_element(*ForWhoSamokatLocator.PHONE).send_keys(phone)
-    def click_further_button(self):
-        self.driver.find_element(*ForWhoSamokatLocator.FURTHER_BUTTON).click()
+    @allure.step("Заполнение поля 'Телефон'")
+    def send_telephone_number_to_telephone_number_field(self, text):
+        self.send_keys(ForWhoSamokatLocator.PHONE, text)
+
+    @allure.step("Клик на кнопку 'Далее'")
+    def click_on_the_next_button(self):
+        self.click_button(ForWhoSamokatLocator.FURTHER_BUTTON)
 
 
-    def filling_data1(self):
-        self.set_name("Иван")
-        self.set_surname("Иванов")
-        self.set_adress("Коммунистический проспект, 35/3")
-        self.set_subway_stations()
-        self.set_phone("79196917519")
-        self.click_further_button()
-
-    
-    def filling_data2(self):
-        self.set_name("Петр")
-        self.set_surname("Петров")
-        self.set_adress("Ленинский проспект, 10")
-        self.set_subway_stations()
-        self.set_phone("79991234567")
-        self.click_further_button()
+    allure.step("Полное заполнение информации о пользователе")
+    def complete_send_field_about_person(self, user):
+        
+        self.send_name_to_name_field(user['first_name'])
+        self.send_last_name_to_name_field(user['last_name'])
+        self.send_address_to_address_field(user['address'])
+        self.send_metro_station_to_metro_station_field()
+        self.send_telephone_number_to_telephone_number_field(user['phone'])
+        self.click_on_the_next_button()    
