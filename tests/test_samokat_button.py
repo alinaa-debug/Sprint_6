@@ -12,9 +12,10 @@ class Test_samokat_button:
         correct_input = driver.find_element(*HOME_PAGE)
         assert correct_input.is_displayed()
 
+
     @allure.story("Кнопка Яндекс")
     def test_yandex_button(self,driver):
         page = samokat_button_page(driver)
         page.click_yandex_button_page()
         driver.switch_to.window(driver.window_handles[1])
-        assert 'dzen.ru' in driver.current_url 
+        assert 'dzen.ru'  in driver.current_url 

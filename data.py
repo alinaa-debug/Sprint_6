@@ -13,6 +13,7 @@ class Users:
         'comment': 'Проще позвонить, чем у кого-то занимать'
     }
     
+    
     user_2 = {
         'first_name': 'Иван',
         'last_name': 'Борисов',

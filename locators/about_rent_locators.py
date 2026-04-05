@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
 class AboutRentLocators():
 
     DELEVIRY_INPUT = (By.XPATH, "//input[@placeholder= '* Когда привезти самокат']")
