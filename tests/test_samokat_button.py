@@ -4,6 +4,7 @@ from locators.locator_page import HOME_PAGE
 @allure.feature("Кнопки самоката")
 class Test_samokat_button:
     
+
     @allure.story("Кнопка самокат")
     def test_samocat_button(self,driver):
         page = samokat_button_page(driver)
@@ -17,4 +18,4 @@ class Test_samokat_button:
         page = samokat_button_page(driver)
         page.click_yandex_button_page()
         driver.switch_to.window(driver.window_handles[1])
-        assert 'dzen.ru' in driver.current_url 
+        assert 'dzen.ru'  in driver.current_url 

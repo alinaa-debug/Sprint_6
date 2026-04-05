@@ -1,33 +1,43 @@
 import allure
 from page_objects.for_who_samokat_obgect import ForWhoSamokatPage
 from page_objects.order_button_page import Order_button
-from page_objects.accept_order import AcceptPage
 from page_objects.about_rent_object import SamokatPage
+from page_objects.accept_order import AcceptPage
+from data import Users  
 
 @allure.feature("Создание заказа")
-@allure.story("Пользователь может оформить заказ самоката")
-@allure.title("Тест оформления заказа через кнопку 'Заказать'")
-def test_creating_an_order(driver):
+class TestOrderPage:
 
-    order_page = Order_button(driver)
-    for_who_page = ForWhoSamokatPage(driver)
-    samokat_page = SamokatPage(driver)
-    accept_page = AcceptPage(driver)
+    @allure.title("тест на оформление заказа через кнопку заказа в хедере")
+    @allure.description(
+        "1. Принять куки\n"
+        "2. Кликнуть кнопку 'Заказать' в хедере\n"
+        "3. Заполнить форму о себе и нажать далее\n"
+        "4. Заполнить форму о заказе и нажать 'Заказать'"
+    )
+    def test_order_by_header_order_button_true(self, driver):
+        
+        # Создаём объекты страниц
+        order_page = Order_button(driver)
+        for_who_page = ForWhoSamokatPage(driver)
+        samokat_page = SamokatPage(driver)
+        accept_page = AcceptPage(driver)
 
-    with allure.step("Принять cookies"):
+
+        # 1. Принять куки
         order_page.accept_cookies()
 
-    with allure.step("Нажать кнопку 'Заказать'"):
+        # 2. Кликнуть первую кнопку "Заказать"
         order_page.first_order_button()
 
-    with allure.step("Заполнить данные пользователя"):
-        for_who_page.filling_data1()
+        # 3. Заполнить форму о себе
+        for_who_page.complete_send_field_about_person(Users.user_1)
 
-    with allure.step("Заполнить данные аренды"):
-        samokat_page.about_rent_first()
+        # 4. Заполнить форму о заказе
+        samokat_page.fill_rent_first(Users.user_1)
 
-    with allure.step("Подтвердить заказ"):
+        # 5. Подтвердить заказ
         accept_page.accept_order_page()
 
-    with allure.step("Проверить переход на страницу заказа"):
-        assert driver.current_url == "https://qa-scooter.praktikum-services.ru/order"    
+        # Проверка URL
+        assert driver.current_url == "https://qa-scooter.praktikum-services.ru/order"
