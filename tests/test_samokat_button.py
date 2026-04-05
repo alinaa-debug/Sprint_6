@@ -4,6 +4,7 @@ from locators.locator_page import HOME_PAGE
 @allure.feature("Кнопки самоката")
 class Test_samokat_button:
     
+    
     @allure.story("Кнопка самокат")
     def test_samocat_button(self,driver):
         page = samokat_button_page(driver)

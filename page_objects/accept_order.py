@@ -1,4 +1,3 @@
-
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC 
 from locators.accept_order_locators import AcceptOrderLocators
