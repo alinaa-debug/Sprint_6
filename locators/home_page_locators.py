@@ -1,7 +1,5 @@
 from selenium.webdriver.common.by import By
 class HomePageLocators():
-
-
     FIRST_QUESTION = (By.XPATH, "//div[contains(text(), 'Сколько это стоит')]")
     SECOND_QUESTION = (By.XPATH, '//div[text()="Хочу сразу несколько самокатов! Так можно?"]')
     THIRD_QUESTION = (By.XPATH, '//div[text()="Как рассчитывается время аренды?"]')

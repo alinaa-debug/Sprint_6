@@ -13,6 +13,7 @@ class HomePage(BasePage):
         self.driver.find_element(*HomePageLocators.FIRST_QUESTION).click()
         return self.driver.find_element(*HomePageLocators.FIRST_ANSWER).text
 
+
     @allure.step("Открыть второй вопрос и получить ответ")
     def question2(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")

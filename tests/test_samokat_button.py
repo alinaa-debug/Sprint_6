@@ -12,7 +12,6 @@ class Test_samokat_button:
         correct_input = driver.find_element(*HOME_PAGE)
         assert correct_input.is_displayed()
 
-
     @allure.story("Кнопка Яндекс")
     def test_yandex_button(self,driver):
         page = samokat_button_page(driver)

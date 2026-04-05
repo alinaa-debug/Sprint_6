@@ -10,7 +10,6 @@ class Test_home_page:
         text = page.question1()
         assert "Сутки — 400 рублей." in text 
     
-
     @allure.story("Вопрос 2")
     @allure.title("Проверка ответа на второй вопрос")
     def test_question2(self,driver): 

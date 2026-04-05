@@ -15,7 +15,6 @@ class AcceptPage(BasePage):
 
         )
 
-
     @allure.step("Подтверждение заказа кнопкой 'Да'")
     def click_accept_button(self):
         self.driver.find_element(*AcceptOrderLocators.ACCEPT_BUTTON).click()

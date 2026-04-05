@@ -12,6 +12,7 @@ class ForWhoSamokatPage(BasePage):
     def send_name_to_name_field(self, text):
         self.send_keys(ForWhoSamokatLocator.NAME, text)
 
+
     @allure.step("Заполнение поля 'Фамилия'")
     def send_last_name_to_name_field(self, text):
         self.send_keys(ForWhoSamokatLocator.SURNAME, text)

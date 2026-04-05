@@ -5,7 +5,6 @@ from page_objects.base_page import BasePage
 from locators.about_rent_locators import AboutRentLocators
 
 class SamokatPage(BasePage):
-
     @allure.step("Выбор даты аренды и срок аренды")
     def select_date_and_period(self, date_locator, period_locator):
         WebDriverWait(self.driver, 5).until(
